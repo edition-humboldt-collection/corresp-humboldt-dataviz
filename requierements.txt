@@ -1,0 +1,7 @@
+jupyter notebook
+pivottablejs
+matplotlib
+pandas
+ipywidgets
+geopy
+nested_lookup
