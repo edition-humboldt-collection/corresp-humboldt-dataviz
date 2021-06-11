@@ -1,13 +1,34 @@
 ![coverimg](documentation/cover_readme.png)
 
 # The project
-## About the project
+## About
 This experimental project seeks to discover, explore and visualise the correspondence of Alexander von Humboldt. It is the result of the first part of a four-month internship within the BBAW's project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en), a digital edition of Alexander von Humboldt's travel journals and correspondence.
 
 The idea started with the analogous collection of Alexander von Humboldt's letters held at the BBAW. Decades ago, the academy sought to catalogue the scientist's correspondence. They have preserved many copies as well as original letters. All these letters are still kept in a similar way with an old archiving system. Only the research aid has been digitally reproduced. 
 
 The original idea was initially to reconstruct at least part of this collection and to discover it with new possibilities. 
 
+## Structure of the repository
+```
+corresp-humboldt-dataviz
+    ├── data
+    │   ├── edh_findbuch.json
+    │   ├── records.json
+    ├── documentation/...
+    ├── notebooks
+    │   ├── mapviz.ipynb
+    │   └── search.ipynb
+    ├── routes
+    │   ├── mapviz.py
+    │   ├── prepare_data.py
+    │   ├── search_by.py
+    │   ├── search_dynamic.py
+    │   ├── widgets.py
+    │   └── women.py.ipynb
+    ├── .gitignore
+    └── requirements.txt
+
+```
 ## Data
 The [Kalliope Verbund](https://kalliope-verbund.info/) is certainly the largest catalogue of archives of partly German speaking institutions. The data of the letters sent and received by Alexander von Humboldt have been retrieved from the Kalliope's API in Dublin Core format.
 The data of Alexander von Humboldt's correspondence preserved at the [Bibliothèque nationale de France](https://catalogue.bnf.fr/index.do) and accessible on the latter's online catalogue in csv format were then retrieved.
