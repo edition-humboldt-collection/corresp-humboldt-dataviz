@@ -4,6 +4,8 @@ import IPython
 from IPython.display import display, clear_output
 from ipywidgets import HTML, Output, HBox
 from ipyleaflet import Map, Marker, Popup
+import matplotlib.pyplot as plt
+
 
 from search_dynamic import show_webpage,btn_new_search
 from prepare_data import getJSON, avoidTupleInList, getYears
@@ -23,11 +25,10 @@ def show_map(data: list, by : str, first: bool):
     marker = None
     for i in data:
             try :
-                print(i[by])
                 if i[by]["address"] not in cities:
                     city = i[by]["address"]
                     cities[city] = {}
-                    cities[city]["message"] = "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"] +"</i> <br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">auf Kalliope</a> <hr>"
+                    cities[city]["message"] = "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"] +"</i> <br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">online catalogue</a> <hr>"
                     cities[city]["coordinates"] = [i[by]["coordinates"][1], i[by]["coordinates"][0]]
                     
                 elif i[by]["address"] in cities:
@@ -52,7 +53,6 @@ def show_map(data: list, by : str, first: bool):
         print("An error has been encountered, the map cannot be displayed. We propose to have access to the results in a table format.")
         display(pd.DataFrame(pd.json_normalize(data)))
     else:
-        print("Points on the map represent the " + by + " of letters.")
         display(m)
 
 
@@ -231,3 +231,136 @@ def mapsearch(data, search_possibilities, flag : bool):
         return search_dropdown
     else :
         return display(search_dropdown)
+
+
+def person_change(change): 
+    if change['type'] == 'change' and change['name'] == 'value':
+        person = change['new']
+        results = []
+        # get the corresponding letters
+        for i in data:
+            try : 
+                if change['new'] in i["creator"] or change['new'] in i["subject"]:
+                    results.append(i)
+            except: pass
+        
+        # from corresponding letters, get and transform the data to build the histogramm
+        liste = []
+        for i in results:
+            try :
+                if int(i['date'][:4]) <1859:
+                    liste.append((int(i['date'][:4]), int(1)))
+            except:pass
+            
+            
+        # create the histogramm
+        title = 'Anzahl des Briefwechsels zwischen AvH(1769-1859) und ' + person
+        x_coords = [coord[0] for coord in liste]
+        y_coords = [coord[1] for coord in liste]
+        fig= plt.figure(figsize=(10,5))
+        plt.hist(x_coords, bins=30)
+        fig.suptitle(title, fontsize=12)
+        plt.xlabel('Jahr', fontsize=12)
+        plt.ylabel('Anzahl der Briefe', fontsize=12)
+        plt.show()
+
+
+def by_person(data:dict):
+    """
+    Function that creates a dropdown menu of all persons 
+    who have received and/or sent at least one letter 
+    for which a date is recorded
+    :param data: dict
+    :return: dropdown menu
+    :rtype: widget
+    """
+    # Get the letters which have a recorded date
+    with_date= []
+    for i in data:
+        try:
+            if bool(i['date']) == True:
+                with_date.append(i)
+        except:pass
+        
+    # Get all people who received or sent a letter    
+    creators = avoidTupleInList(nested_lookup('creator', with_date))
+    subjects = avoidTupleInList(nested_lookup('subject', with_date))
+    people = []
+    
+    # Delete Humboldt from creators' and subjects' lists
+    for i in creators:
+        if '[' in i :
+            i = i.split(' [vermutlich]')[0]
+        if 'Humboldt' not in i:
+            people.append(i)
+    for i in subjects:
+        if 'Humboldt' not in i and i not in people:
+            people.append(i)
+
+    #Create dropdown Menu
+    dropdown = createDropdown('', people)
+    dropdown.observe(person_change)
+    return dropdown 
+
+
+def age_distribution() :
+    years_an = {}
+    years_von = {}
+    
+    liste_an=[]
+    liste_von=[]
+    
+    # Letter to Humboldt
+    for i in data :
+        try :
+            if i["date"] and "Humboldt" not in i["creator"] and type(i["creator"]) != list :
+                if i["date"][:4] not in years_an:
+                    years_an[i["date"][:4]] = []
+                years_an[i["date"][:4]].append(int(i["date"][:4]) - int(i["creator"].split("(")[1].split("-")[0][:4]))
+        except: pass 
+
+    # Letter by Humboldt     
+    for i in data :
+        try :
+            if i["date"] and "Humboldt" not in i["subject"] and type(i["subject"]) != list :
+                if i["date"][:4] not in years_von:
+                    years_von[i["date"][:4]] = []
+                years_von[i["date"][:4]].append(int(i["date"][:4]) - int(i["subject"].split("(")[1].split("-")[0][:4]))
+        except: pass 
+
+    for element in years_an.keys():
+        try :
+            if (float(element)<1859):
+                for element1 in years_an[element]: 
+                    if (float(element1)>0):
+                        liste_an.append((float(element), float(element1)))
+        except : pass
+                
+    for element in years_von.keys():
+        try :
+            if (float(element)<1859):
+                for element1 in years_von[element]: 
+                    if (float(element1)>0):
+                        liste_von.append((float(element), float(element1)))
+        except : pass
+
+    x_coords = [coord[0] for coord in liste_an]
+    y_coords = [coord[1] for coord in liste_an]
+    fig= plt.figure(figsize=(10,8))
+    plt.hist2d(x_coords, y_coords, bins=(40, 40), cmap=plt.cm.Reds)
+    fig.suptitle('Letters to AvH: age distribution of senders', fontsize=14)
+    plt.xlabel('Year', fontsize=12)
+    plt.ylabel('Age of the correspondence partner', fontsize=12)
+    plt.colorbar()
+    an_plt = plt.show()
+
+    von_x_coords = [coord[0] for coord in liste_von]
+    von_y_coords = [coord[1] for coord in liste_von]
+    fig= plt.figure(figsize=(10,8))
+    plt.hist2d(von_x_coords, von_y_coords, bins=(40, 40), cmap=plt.cm.Reds)
+    fig.suptitle('Letters by AvH: age distribution of addressees', fontsize=14)
+    plt.xlabel('Year', fontsize=12)
+    plt.ylabel('Age of the correspondence partner', fontsize=12)
+    plt.colorbar()
+    von_plt = plt.show()
+
