@@ -8,23 +8,23 @@ The idea started with the analogous collection of Alexander von Humboldt's lette
 
 The original idea was initially to reconstruct at least part of this collection and to discover it with new possibilities. 
 
-## Structure of the repository
+## Repository structure
 ```
 corresp-humboldt-dataviz
     ├── data
-    │   ├── edh_findbuch.json
-    │   ├── records.json
+    │     ├── edh_findbuch.json
+    │     └── records.json
     ├── documentation/...
     ├── notebooks
-    │   ├── mapviz.ipynb
-    │   └── search.ipynb
+    │     ├── mapviz.ipynb
+    │     └── search.ipynb
     ├── routes
-    │   ├── mapviz.py
-    │   ├── prepare_data.py
-    │   ├── search_by.py
-    │   ├── search_dynamic.py
-    │   ├── widgets.py
-    │   └── women.py.ipynb
+    │     ├── mapviz.py
+    │     ├── prepare_data.py
+    │     ├── search_by.py
+    │     ├── search_dynamic.py
+    │     ├── widgets.py
+    │     └── women.py
     ├── .gitignore
     └── requirements.txt
 
@@ -45,13 +45,13 @@ Several libraries were used to visualise the data, among them the main ones are
 - ipyleaflet for map visualisations
 
 
-# Discover the Alexander von Humboldt's correspondance
+# Discover the Alexander von Humboldt's correspondence
 ## First launch
 Prerequisite: python3
 
 *You can install it via this [site](https://www.python.org/downloads/). As a reminder: most Linux systems already have Python installed.*
 
-1. Clone this git repository : `git clone https://github.com/axellelecroq/pantheonisees.git` et rentrer dedans
+1. Clone this git repository : `git clone https://github.com/axellelecroq/pantheonisees.git` and go inside
 2. Install a virtual environment : `virtualenv -p python3 env`
 3. Activate the virtual environment via `source env/bin/activate`
 4. Install `requirements.txt` : enter into the corresponding folder `corresp-humboldt-dataviz` and run the command `pip install -r requirements.txt`
