@@ -11,20 +11,20 @@ The original idea was initially to reconstruct at least part of this collection 
 ## Repository structure
 ```
 corresp-humboldt-dataviz
-    ├── data
-    │     ├── edh_findbuch.json
-    │     └── records.json
     ├── documentation/...
     ├── notebooks
-    │     ├── mapviz.ipynb
-    │     └── search.ipynb
-    ├── routes
-    │     ├── mapviz.py
-    │     ├── prepare_data.py
-    │     ├── search_by.py
-    │     ├── search_dynamic.py
-    │     ├── widgets.py
-    │     └── women.py
+    │      ├── data
+    │      │    ├── edh_findbuch.json
+    │      │    └── records.json
+    │      ├──  routes
+    │      │    ├── mapviz.py
+    │      │    ├── prepare_data.py
+    │      │    ├── search_by.py
+    │      │    ├── search_dynamic.py
+    │      │    ├── widgets.py
+    │      │    └── women.py
+    │      ├── mapviz.ipynb
+    │      └── search.ipynb
     ├── .gitignore
     └── requirements.txt
 

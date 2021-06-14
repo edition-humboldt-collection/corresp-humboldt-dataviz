@@ -4,8 +4,8 @@ import IPython
 from IPython.display import display, HTML, IFrame, Javascript
 import ipywidgets as wgt
 
-from prepare_data import getJSON, avoidTupleInList, getYears 
-from widgets import createDropdown, createButton
+from .prepare_data import getJSON, avoidTupleInList, getYears 
+from .widgets import createDropdown, createButton
 
 
 data = getJSON('data/records.json')

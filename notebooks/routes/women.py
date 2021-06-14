@@ -4,8 +4,8 @@ from nested_lookup import nested_lookup
 import matplotlib.pyplot as plt
 import gender_guesser.detector
 
-from widgets import createDropdown, createButton, createCheckBox
-from prepare_data import getJSON, avoidTupleInList
+from .widgets import createDropdown, createButton, createCheckBox
+from .prepare_data import getJSON, avoidTupleInList
 
 
 data = getJSON('data/records.json')

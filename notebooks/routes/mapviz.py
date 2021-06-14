@@ -7,9 +7,9 @@ from ipyleaflet import Map, Marker, Popup
 import matplotlib.pyplot as plt
 
 
-from search_dynamic import show_webpage,btn_new_search
-from prepare_data import getJSON, avoidTupleInList, getYears
-from widgets import createDropdown, createButton, createCheckBox
+from .search_dynamic import show_webpage,btn_new_search
+from .prepare_data import getJSON, avoidTupleInList, getYears
+from .widgets import createDropdown, createButton, createCheckBox
 
 data = getJSON('data/records.json')
 out = Output()

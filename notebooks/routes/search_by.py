@@ -4,9 +4,9 @@ import IPython
 from IPython.display import display
 import ipywidgets as wgt
 
-from search_dynamic import show_webpage
-from prepare_data import getJSON, avoidTupleInList, getYears
-from widgets import createDropdown, createButton
+from .search_dynamic import show_webpage
+from .prepare_data import getJSON, avoidTupleInList, getYears
+from .widgets import createDropdown, createButton
 
 data = getJSON('data/records.json')
 
