@@ -15,6 +15,13 @@ data = getJSON('data/records.json')
 out = Output()
 
 def show_map(data: list, by : str, first: bool):
+    """
+    Show places (contributor or coverage place) on a map.
+    
+    :param data: List of letters
+    :param by: Which points should appear on the map? Possibility : coverage_location or contributor_location
+    :param first: Set False if you use it recursively
+    """
     m = Map(
             center=(35.52437, -30.41053),
             zoom=2,
@@ -23,6 +30,7 @@ def show_map(data: list, by : str, first: bool):
     
     cities = {}
     marker = None
+
     for i in data:
             try :
                 if i[by]["address"] not in cities:
@@ -47,6 +55,7 @@ def show_map(data: list, by : str, first: bool):
                 m.add_layer(marker)
                 marker.popup = message
             except: pass
+
     if marker == None and first == True :
         show_map(data, "contributor_location", False)
     elif marker == None and first == False:
@@ -117,35 +126,61 @@ def both_uncheck():
 
 
 def date_change(change): 
+    """
+    Handle if a date is selected in a dropdown menu.
+    :param change:
+    """
     if change['type'] == 'change' and change['name'] == 'value':
         date = change['new']
         results = []
 
         for i in data:
             try : 
-                if change['new'] in i["date"]:
+                if date in i["date"]:
                     results.append(i)
             except: pass
-
         show_map(results, "coverage_location", True)
 
-    if change['new'] == False:
+    if date == False:
         show_map(data, "coverage_location", True)
 
+
 def by_date(data:dict):
+    """
+    Create a dropdown menu containing years of a given letter`s dict.
+    :param data: dict of letter
+    :rtype: widget
+    :return: dropdown
+    """
     years = getYears(avoidTupleInList(nested_lookup('date', data)))
     dropdown = createDropdown('', years)
     dropdown.observe(date_change)
     return dropdown 
 
+
 def is_male_name(name:str):
+    """
+    Check if the given name is a male name.
+    :param name: str
+    :rtype: bool
+    :return: True or False
+    """
     male_name = ['Chr.', 'Jean-Baptiste', 'Heymann', 'Étienne', 'Whitelaw', 'Balduin', 'Edme', 'Hipolit', 'Moriz', 'Modest', 'Alire', 'Christ...', 'Dimitrij', 'Francois', 'Elte', 'Aylmer' ]
     for i in male_name:
         if name == i:
             return True
+    return False
 
 
 def mapsearch(data, search_possibilities, flag : bool):
+    """
+    Recursive algorithm with allows 
+    a dynamic search with a map visualisation of results.
+    
+    :param data: list
+    :param search_possibilities: list
+    :param flag: bool
+    """
     search_by = search_possibilities
     search_dropdown = createDropdown('Search by', search_by)
     new = flag
@@ -234,13 +269,19 @@ def mapsearch(data, search_possibilities, flag : bool):
 
 
 def person_change(change): 
+    """
+    Handle if a person was selected in the corresponding dropdown menu
+    and show a histogramm of the correspondence between the selected person
+    and Alexander von Humboldt.
+    :param change: 
+    """
     if change['type'] == 'change' and change['name'] == 'value':
         person = change['new']
         results = []
         # get the corresponding letters
         for i in data:
             try : 
-                if change['new'] in i["creator"] or change['new'] in i["subject"]:
+                if person in i["creator"] or person in i["subject"]:
                     results.append(i)
             except: pass
         
@@ -254,20 +295,20 @@ def person_change(change):
             
             
         # create the histogramm
-        title = 'Anzahl des Briefwechsels zwischen AvH(1769-1859) und ' + person
+        title = 'Correspondence between AvH(1769-1859) und ' + person
         x_coords = [coord[0] for coord in liste]
         y_coords = [coord[1] for coord in liste]
         fig= plt.figure(figsize=(10,5))
         plt.hist(x_coords, bins=30)
         fig.suptitle(title, fontsize=12)
-        plt.xlabel('Jahr', fontsize=12)
-        plt.ylabel('Anzahl der Briefe', fontsize=12)
+        plt.xlabel('Year', fontsize=12)
+        plt.ylabel('Number of letters', fontsize=12)
         plt.show()
 
 
 def by_person(data:dict):
     """
-    Function that creates a dropdown menu of all persons 
+    Creates a dropdown menu of all people 
     who have received and/or sent at least one letter 
     for which a date is recorded
     :param data: dict
