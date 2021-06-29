@@ -16,7 +16,7 @@ corresp-humboldt-dataviz
     │      ├── data
     │      │    ├── edh_findbuch.json
     │      │    └── records.json
-    │      ├──  routes
+    │      ├──  utils
     │      │    ├── mapviz.py
     │      │    ├── prepare_data.py
     │      │    ├── search_by.py
