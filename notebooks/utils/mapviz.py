@@ -36,12 +36,12 @@ def show_map(data: list, by : str, first: bool):
                 if i[by]["address"] not in cities:
                     city = i[by]["address"]
                     cities[city] = {}
-                    cities[city]["message"] = "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"] +"</i> <br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">online catalogue</a> <hr>"
+                    cities[city]["message"] = "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"] +"</i> <br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">online</a> <hr>"
                     cities[city]["coordinates"] = [i[by]["coordinates"][1], i[by]["coordinates"][0]]
                     
                 elif i[by]["address"] in cities:
                     city = i[by]["address"]
-                    cities[city]["message"] = cities[city]["message"] + "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"]  + "</i><br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">auf Kalliope</a> <hr>"
+                    cities[city]["message"] = cities[city]["message"] + "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"]  + "</i><br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">online</a> <hr>"
             except : pass
     for i in cities.keys():
             try :
@@ -49,7 +49,7 @@ def show_map(data: list, by : str, first: bool):
                 if cities[i]["message"].count("<hr>") <3 :
                     message.value = cities[i]["message"]
                 else : 
-                    message.value = str(cities[i]["message"].count("<hr>")) + " Briefe. Es ist aber zu viele Ergebnisse, um alle hier zu zeigen."
+                    message.value = str(cities[i]["message"].count("<hr>")) + " letters. There are too many results to show them all here."
                 message.description = i.upper()
                 marker = Marker(location=(cities[i]["coordinates"][0], cities[i]["coordinates"][1]))
                 m.add_layer(marker)
