@@ -1,9 +1,10 @@
 from nested_lookup import nested_lookup
 import pandas as pd
+import numpy
 import IPython
 from IPython.display import display, clear_output
 from ipywidgets import HTML, Output, HBox
-from ipyleaflet import Map, Marker, Popup
+from ipyleaflet import Map, Marker, Popup, CircleMarker
 import matplotlib.pyplot as plt
 
 
@@ -22,14 +23,10 @@ def show_map(data: list, by : str, first: bool):
     :param by: Which points should appear on the map? Possibility : coverage_location or contributor_location
     :param first: Set False if you use it recursively
     """
-    m = Map(
-            center=(35.52437, -30.41053),
-            zoom=2,
-            close_popup_on_click=False
-            )
     
     cities = {}
     marker = None
+    coordinates = []
 
     for i in data:
             try :
@@ -43,6 +40,21 @@ def show_map(data: list, by : str, first: bool):
                     city = i[by]["address"]
                     cities[city]["message"] = cities[city]["message"] + "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"]  + "</i><br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">online</a> <hr>"
             except : pass
+    
+    # Coordinates to create a dynamic map boundaries
+    for i in cities.keys():
+        if type(cities[i]["coordinates"][0]) != None and type(cities[i]["coordinates"][1]) != None:
+            coordinates.append([float(cities[i]["coordinates"][0]), float(cities[i]["coordinates"][1])])
+    
+    coordinates = numpy.array(coordinates)
+    data_frame = pd.DataFrame(coordinates, columns=['Lat', 'Long'])
+    sw = data_frame[['Lat', 'Long']].min().values.tolist()
+    ne = data_frame[['Lat', 'Long']].max().values.tolist()
+
+    m = Map(close_popup_on_click=False)
+    m.fit_bounds([sw, ne])
+
+    # Mapmarker and popup message
     for i in cities.keys():
             try :
                 message = HTML()
@@ -51,7 +63,15 @@ def show_map(data: list, by : str, first: bool):
                 else : 
                     message.value = str(cities[i]["message"].count("<hr>")) + " letters. There are too many results to show them all here."
                 message.description = i.upper()
-                marker = Marker(location=(cities[i]["coordinates"][0], cities[i]["coordinates"][1]))
+
+                # Create the marker
+                marker = CircleMarker(location=(cities[i]["coordinates"][0], cities[i]["coordinates"][1]))
+                marker.radius = cities[i]["message"].count("<hr>")+3
+                marker.fill_opacity = 0.8
+                marker.fill_color = "#2A7299"
+                marker.stroke = False
+
+                # Add marker on the map
                 m.add_layer(marker)
                 marker.popup = message
             except: pass
@@ -141,7 +161,7 @@ def date_change(change):
             except: pass
         show_map(results, "coverage_location", True)
 
-    if date == False:
+    if change['new'] == False:
         show_map(data, "coverage_location", True)
 
 
