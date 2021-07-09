@@ -6,6 +6,7 @@ import gender_guesser.detector
 
 from .widgets import createDropdown, createButton, createCheckBox
 from .prepare_data import getJSON, avoidTupleInList
+from .mapviz import show_map
 
 
 data = getJSON('data/records.json')
@@ -62,47 +63,6 @@ def women_partner():
         except: pass
 
     return data_women
-
-
-def show_contributors(data: list, by : str, first: bool):
-    m = Map(
-            center=(35.52437, -30.41053),
-            zoom=2,
-            close_popup_on_click=False
-            )
-    
-    cities = {}
-    marker = None
-    for i in data:
-            try :
-                if i[by]["address"] not in cities:
-                    city = i[by]["address"]
-                    cities[city] = {'message' : '', 'coordinates':[]}
-                    if 'Humboldt' in i['creator']:
-                        who = i['creator']
-                    cities[city]["message"] = i['title'] + "<br><i>"+ i["contributor"] +"</i> <br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">auf Kalliope</a> <hr>"
-                    cities[city]["coordinates"] = [i[by]["coordinates"][1], i[by]["coordinates"][0]]
-                elif i[by]["address"] in cities:
-                    city = i[by]["address"]
-                    cities[city]["message"] = cities[city]["message"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"]  + "</i><br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">auf Kalliope</a> <hr>"
-            except : pass
-
-    
-    for i in cities.keys():
-            try :
-                message = HTML()
-                if cities[i]["message"].count("<hr>") <3 :
-                    message.value = cities[i]["message"]
-                else : 
-                    message.value = cities[i]["message"].split('<hr>')[0] + '<hr>' + str(cities[i]["message"].count("<hr>")-1) + " andere Briefe. Es ist aber zu viele Ergebnisse, um alle hier zu zeigen."
-                message.description = i.upper()
-                marker = Marker(location=(cities[i]["coordinates"][0], cities[i]["coordinates"][1]))
-                m.add_layer(marker)
-                marker.popup = message
-            except: pass
-
-    display(m)
-    
        
     
 def women_change(change): 
@@ -124,7 +84,7 @@ def women_change(change):
                     liste.append((int(i['date'][:4]), int(1)))
             except: 
                 pass
-        show_contributors(results, 'contributor_location', True)
+        show_map(results, 'contributor_location', True)
             
         # create the histogramm
         title = 'Anzahl des Briefwechsels zwischen AvH(1769-1859) und ' + person
