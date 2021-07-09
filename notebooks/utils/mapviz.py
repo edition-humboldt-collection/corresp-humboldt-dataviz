@@ -15,6 +15,18 @@ from .widgets import createDropdown, createButton, createCheckBox
 data = getJSON('data/records.json')
 out = Output()
 
+
+def create_histogramm(data, person):
+        title = 'Correspondence between AvH(1769-1859) und ' + person
+        x_coords = [coord[0] for coord in data]
+        y_coords = [coord[1] for coord in data]
+        fig= plt.figure(figsize=(10,5))
+        plt.hist(x_coords, bins=30)
+        fig.suptitle(title, fontsize=12)
+        plt.xlabel('Year', fontsize=12)
+        plt.ylabel('Number of letters', fontsize=12)
+        return plt
+
 def show_map(data: list, by : str, first: bool):
     """
     Show places (contributor or coverage place) on a map.
@@ -317,14 +329,7 @@ def person_change(change):
             
             
         # create the histogramm
-        title = 'Correspondence between AvH(1769-1859) und ' + person
-        x_coords = [coord[0] for coord in liste]
-        y_coords = [coord[1] for coord in liste]
-        fig= plt.figure(figsize=(10,5))
-        plt.hist(x_coords, bins=30)
-        fig.suptitle(title, fontsize=12)
-        plt.xlabel('Year', fontsize=12)
-        plt.ylabel('Number of letters', fontsize=12)
+        plt = create_histogramm(liste, person)
         plt.show()
 
 

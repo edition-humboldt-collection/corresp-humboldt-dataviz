@@ -6,7 +6,7 @@ import gender_guesser.detector
 
 from .widgets import createDropdown, createButton, createCheckBox
 from .prepare_data import getJSON, avoidTupleInList
-from .mapviz import show_map
+from .mapviz import show_map, create_histogramm
 
 
 data = getJSON('data/records.json')
@@ -87,14 +87,7 @@ def women_change(change):
         show_map(results, 'contributor_location', True)
             
         # create the histogramm
-        title = 'Anzahl des Briefwechsels zwischen AvH(1769-1859) und ' + person
-        x_coords = [coord[0] for coord in liste]
-        y_coords = [coord[1] for coord in liste]
-        fig= plt.figure(figsize=(10,5))
-        plt.hist(x_coords, bins=30)
-        fig.suptitle(title, fontsize=12)
-        plt.xlabel('Jahr', fontsize=12)
-        plt.ylabel('Anzahl der Briefe', fontsize=12)
+        plt = create_histogramm(liste, person)
         plt.show()
 
 
