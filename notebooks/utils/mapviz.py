@@ -43,7 +43,9 @@ def show_map(data: list, by : str, first: bool):
     
     # Coordinates to create a dynamic map boundaries
     for i in cities.keys():
-        if type(cities[i]["coordinates"][0]) != None and type(cities[i]["coordinates"][1]) != None:
+        if type(cities[i]["coordinates"][0]) == float and type(cities[i]["coordinates"][1]) == float:
+            coordinates.append([float(cities[i]["coordinates"][0]), float(cities[i]["coordinates"][1])])
+        elif type(cities[i]["coordinates"][0]) == str and type(cities[i]["coordinates"][1]) == str:
             coordinates.append([float(cities[i]["coordinates"][0]), float(cities[i]["coordinates"][1])])
     
     coordinates = numpy.array(coordinates)
