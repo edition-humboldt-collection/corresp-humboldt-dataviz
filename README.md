@@ -53,7 +53,7 @@ Prerequisite: python3
 
 *You can install it via this [site](https://www.python.org/downloads/). As a reminder: most Linux systems already have Python installed.*
 
-1. Clone this git repository : `git clone https://github.com/axellelecroq/pantheonisees.git` and go inside
+1. Clone this git repository : `git clone https://github.com/edition-humboldt-collection/corresp-humboldt-dataviz.git` and go inside
 2. Install a virtual environment : `virtualenv -p python3 env`
 3. Activate the virtual environment via `source env/bin/activate`
 4. Install `requirements.txt` : enter into the corresponding folder `corresp-humboldt-dataviz` and run the command `pip install -r requirements.txt`
