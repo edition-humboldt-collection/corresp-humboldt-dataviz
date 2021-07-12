@@ -8,9 +8,7 @@
 The project of reconstructing Alexander von Humboldt's correspondence began with the founding of an Alexander von Humboldt Commission at the BBAW in 1956. Two years later a Berlin working position of the new commission was established. Then in 1994, a new academic Advisory Commission was instituted for Humboldt Research Unit until 2014. This way, the project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en) is the continuation of this long-term work and proposes a print and digital edition of Alexander von Humboldt's travel journals and correspondence since 2015.
 
 ### About this project
-This experimental project seeks to discover, explore and visualise the correspondence of Alexander von Humboldt. It is the result of the first part of Axelle Lecroq´s four-month internship within the BBAW's project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en).
-
-The idea started with the analogous collection of Alexander von Humboldt's letters held at the BBAW. Decades ago, the academy sought to catalogue the scientist's correspondence. All these letters are still kept in a similar way with an old archiving system. Only the research aid has been digitally reproduced by Ann McKinney during her intership into the project. 
+This experimental project seeks to discover, explore and visualise the correspondence of Alexander von Humboldt. The idea started with the analogous collection of Alexander von Humboldt's letters held at the BBAW. Decades ago, the academy sought to catalogue the scientist's correspondence. All these letters are still kept in a similar way with an old archiving system. Only the research aid has been digitally reproduced by Ann McKinney during her intership into the project. 
 
 The original idea was initially to reconstruct in a digital way at least part of this correspondence collection and to discover it with new possibilities. 
 
@@ -31,7 +29,7 @@ _*This is the number of entries. This means that an entry can represent more tha
 
 The analogue collection part of this table was written by Ann McKinney. The works used to compile this table are listed in the [bibliography available in `documentation`](documentation/bibliography.md).
 
-## Work on the data
+### Work on the data
 All the data were cleaned and homogenised in order to be able to search in them. In order to visualise the letter on a map, new data were also added for each of the letters:
 - geopoints, geoname ID and [humboldt digital edition](https://edition-humboldt.de/?&l=en) identifier (edh) ID for institution's place
 - geopoints, geoname ID and edh ID for coverage place
@@ -83,4 +81,9 @@ Prerequisite: python3
 2. Activate the virtualenv : `source env/bin/activate`
 3. Run the jupyter notebook with the command : `jupyter notebook`.
 
+# Credits
+Corresp-humboldt-dataviz is developp by [Axelle Lecroq](https://github.com/axellelecroq/), intern in the BBAW's project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en), with the help of [Gordon Fischer](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/fischer-gordon) and under the supervision of [Dr. Ulrich Päßler](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/paessler-ulrich) and [Dr. Tobias Kraft](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/kraft-tobias).
+The search aid for the analogue collection has been digitally reproduced by Ann McKinney.
 
+# Contacts
+If you have any questions or remarks, pleace contact [axelle.lecroq[at]bbaw.de](mailto:axelle.lecroq@bbaw.de).
