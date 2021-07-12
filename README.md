@@ -4,7 +4,7 @@
 ## About
 This experimental project seeks to discover, explore and visualise the correspondence of Alexander von Humboldt. It is the result of the first part of a four-month internship within the BBAW's project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en), a digital edition of Alexander von Humboldt's travel journals and correspondence.
 
-The idea started with the analogous collection of Alexander von Humboldt's letters held at the BBAW. Somne Decades ago, the academy sought to catalogue the scientist's correspondence. They have preserved many copies as well as original letters. All these letters are still kept in a similar way with an old archiving system. Only the research aid has been digitally reproduced. 
+The idea started with the analogous collection of Alexander von Humboldt's letters held at the BBAW. Decades ago, the academy sought to catalogue the scientist's correspondence. They have preserved many copies as well as original letters. All these letters are still kept in a similar way with an old archiving system. Only the research aid has been digitally reproduced. 
 
 The original idea was initially to reconstruct at least part of this collection and to discover it with new possibilities. 
 
