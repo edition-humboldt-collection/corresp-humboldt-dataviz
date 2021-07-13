@@ -23,7 +23,7 @@ In order for this digital project to be representative of the years of work carr
 The institutions listed in the BBAW search help are far from being only European, the documents concerning AvH and kept at the [American Philosophical Society](https://www.amphilsoc.org/library/search-collections) were also retrieved, in EAD format.
 
 ### Quantity of letters
-Based on caluclations made in 1962, it was been estimated that Humboldt wrote up to 3,000 letters a year. Extrapolated, this resulted in an estimated total of 35,000 to 50,000 letters from Humboldt's hand; this estimate is still valid today ([Biermann and Lange 1962, p. 226](documentation/bibliography.md)). In the case of the letters received by Humboldt, most of which are now considered lost, Biermann and Lange assumed approximately 100,000 letters. 
+Based on calculations made in 1962, it was been estimated that Humboldt wrote up to 3,000 letters a year. Extrapolated, this resulted in an estimated total of 35,000 to 50,000 letters from Humboldt's hand; this estimate is still valid today ([Biermann and Lange 1962, p. 226](documentation/bibliography.md)). In the case of the letters received by Humboldt, most of which are now considered lost, Biermann and Lange assumed approximately 100,000 letters. 
 
 ![quantityletters](documentation/quantity.jpg)
 
@@ -85,7 +85,7 @@ Prerequisite: python3
 
 # Credits
 Corresp-humboldt-dataviz is developed by [Axelle Lecroq](https://github.com/axellelecroq/), intern in the BBAW's project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en), with the help of [Gordon Fischer](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/fischer-gordon) and under the supervision of [Dr. Ulrich Päßler](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/paessler-ulrich) and [Dr. Tobias Kraft](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/kraft-tobias).
-The search aid for the analogue collection has been digitally reproduced by Ann McKinney.
+The search aid for the analogue collection has been digitally reproduced by Anne McKinney.
 
 # Contacts
-If you have any questions or remarks, pleace contact [axelle.lecroq[at]bbaw.de](mailto:axelle.lecroq@bbaw.de).
+If you have any questions or remarks, please contact [axelle.lecroq[at]bbaw.de](mailto:axelle.lecroq@bbaw.de).
