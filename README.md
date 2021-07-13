@@ -14,6 +14,7 @@ This experimental project seeks to discover, explore and visualise the correspon
 
 The original idea was to make at least a part of the collection digitally accessible and to discover it with the help of new research tools. With this goal in mind, the catalog was to be correlated with modern manuscript databases.
 
+This project is a milestone and aims to evolve in the future with, for example, the development of a web interface for a better user experience and more accessible data.
 
 ## Data
 The [Kalliope Verbund](https://kalliope-verbund.info/) is certainly the largest catalogue of archives of partly German speaking institutions. The data of the letters sent and received by Alexander von Humboldt (AvH) have been retrieved from the Kalliope's API in Dublin Core format.
@@ -67,7 +68,9 @@ Several libraries were used for data visualisations, among them the main ones ar
 
 
 # Discover the Alexander von Humboldt's correspondence
-## First launch
+These guidelines are intended to assist the user in setting up the project on their local server. These commands lines can be used on a Linux system or Windows system with a [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+
+## First launch 
 Prerequisite: python3
 
 *You can install it via this [site](https://www.python.org/downloads/). As a reminder: most Linux systems already have Python installed.*
