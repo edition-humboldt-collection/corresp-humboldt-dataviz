@@ -10,14 +10,14 @@ The project of reconstructing Alexander von Humboldt's correspondence began with
 Based on this constantly growing collection, the *Alexander-von-Humboldt-Forschungsstelle* (Alexander von Humboldt Resarch Center) began its work in 1970. From 1973 to 2014 a team of researchers published 42 volumes of correspondences, monographs and anthologies. Since 2015, a new project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en) continues this long-term work in the spirit of digital humanities and prepares a digital and print edition of Alexander von Humboldt's travel journals and scientific manuscripts from his literary estate.
 
 ### About this project
-This experimental project seeks to discover, explore and visualise the correspondence of Alexander von Humboldt. The idea started with the catalogue of Alexander von Humboldt's letters held at the Berlin-Brandenburg Academy of Sciences (BBAW). Up to now, the collection is only accessible via an index card system established in the 1950s. Only the research aid has been digitally reproduced by Anne McKinney during her intership with the project. 
+This experimental project seeks to discover, explore and visualize the correspondence of Alexander von Humboldt. The idea started with the catalog of Alexander von Humboldt's letters held at the Berlin-Brandenburg Academy of Sciences (BBAW). Up to now, the collection is only accessible via an index card system established in the 1950s. Only the research aid has been digitally reproduced by Anne McKinney during her intership with the project. 
 
 The original idea was to make at least a part of the collection digitally accessible and to discover it with the help of new research tools. With this goal in mind, the catalog was to be correlated with modern manuscript databases.
 
 This project is a milestone and aims to evolve in the future with, for example, the development of a web interface for a better user experience and more accessible data.
 
 ## Data
-The [Kalliope Verbund](https://kalliope-verbund.info/) is certainly the largest catalogue of archives of partly German speaking institutions. The data of the letters sent and received by Alexander von Humboldt (AvH) have been retrieved from the Kalliope's API in Dublin Core format.
+The [Kalliope Verbund](https://kalliope-verbund.info/) is certainly the largest catalog of archives of partly German speaking institutions. The data of the letters sent and received by Alexander von Humboldt (AvH) have been retrieved from the Kalliope's API in Dublin Core format.
 
 In order for this digital project to be representative of the years of work carried out by the BBAW, it was important to include data from outside Germany. It was initially agreed to use data from the [Bibliothèque nationale de France](https://catalogue.bnf.fr/index.do) (BnF), which offers a user-friendly API. The data of Alexander von Humboldt's correspondence preserved at the [Bibliothèque nationale de France](https://catalogue.bnf.fr/index.do) and accessible on the latter's online catalogue in csv format were then retrieved.
 
