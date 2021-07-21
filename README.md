@@ -3,8 +3,6 @@
 # The project
 ## About
 ### History
-> "The international nature of Humboldt's biography and the sad fate of his estate had scattered the materials not only all over Germany but worldwide, so that even international cooperation was necessary if one wanted to get hold of all the sources." ((add source))
-
 The project of reconstructing Alexander von Humboldt's correspondence began with the founding of an Alexander von Humboldt Commission at the *Deutsche Akademie der Wissenschaften zu Berlin* (German Academy of Sciences at Berlin) in 1956. In 1960, the Academies of Sciences in East and West Germany as well as the Austrian Academy of Sciences sent a joint request for international support of an edition of Humboldt's correspondence to academies, archives, librarires and collectors. Only two years later, copies of about 7,600 letters from all over the world had arrived in Berlin. 
 
 Based on this constantly growing collection, the *Alexander-von-Humboldt-Forschungsstelle* (Alexander von Humboldt Resarch Center) began its work in 1970. From 1973 to 2014 a team of researchers published 42 volumes of correspondences, monographs and anthologies. Since 2015, a new project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en) continues this long-term work in the spirit of digital humanities and prepares a digital and print edition of Alexander von Humboldt's travel journals and scientific manuscripts from his literary estate.
