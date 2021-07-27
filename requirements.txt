@@ -1,6 +1,10 @@
-pivottablejs
-matplotlib
-pandas
+ipyleaflet
 ipywidgets
+gender_guesser
 geopy
+matplotlib
 nested_lookup
+numpy
+pandas
+pivottablejs
+unidecode
