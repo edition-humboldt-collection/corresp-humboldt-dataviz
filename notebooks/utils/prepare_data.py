@@ -45,5 +45,18 @@ def getYears(dates :list):
         results.append(i[:4])
     return results
 
-        
 
+def getHumboldtYears(dates:list):
+    """
+    Give only years of Humboldt's life
+    :param dates: list
+    :return: results
+    :rtype: list
+    """
+    results = []
+    for i in dates:
+        try:
+            if int(i) > 1769  and int(i) < 1859 :
+                results.append(i)
+        except: pass
+    return results

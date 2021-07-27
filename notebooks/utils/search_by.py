@@ -5,7 +5,7 @@ from IPython.display import display
 import ipywidgets as wgt
 
 from .search_dynamic import show_webpage
-from .prepare_data import getJSON, avoidTupleInList, getYears
+from .prepare_data import getJSON, avoidTupleInList, getYears, getHumboldtYears
 from .widgets import createDropdown, createButton
 
 data = getJSON('data/records.json')
@@ -332,7 +332,7 @@ def search_date(data:dict):
     :return: dropdown menu
     :rtype: widget
     """
-    years = getYears(avoidTupleInList(nested_lookup('date', data)))
+    years = getHumboldtYears(getYears(avoidTupleInList(nested_lookup('date', data))))
     dropdown = createDropdown('', years)
     dropdown.observe(onChangeDate)
     return dropdown 

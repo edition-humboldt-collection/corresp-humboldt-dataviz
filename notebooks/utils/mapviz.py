@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 
 
 from .search_dynamic import show_webpage,btn_new_search
-from .prepare_data import getJSON, avoidTupleInList, getYears
+from .prepare_data import getJSON, avoidTupleInList, getYears, getHumboldtYears
 from .widgets import createDropdown, createButton, createCheckBox
 
 data = getJSON('data/records.json')
@@ -136,7 +136,7 @@ def by_date(data:dict):
     :rtype: widget
     :return: dropdown
     """
-    years = getYears(avoidTupleInList(nested_lookup('date', data)))
+    years = getHumboldtYears(getYears(avoidTupleInList(nested_lookup('date', data))))
     dropdown = createDropdown('', years)
     # If a date is selected in the dropdown menu, then the function
     # date_change is called.
