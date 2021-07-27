@@ -380,3 +380,60 @@ def age_distribution() :
     plt.colorbar()
     von_plt = plt.show()
 
+
+def all_on_map(data, by: str):
+    """
+    Show all letters of AvH's correspondence
+    :param data: List of letters
+    :param by: 
+    """
+    cities = {}
+    marker = None
+    coordinates = []
+    m = Map(
+            center=(10, -2),
+            zoom=1.5,
+            close_popup_on_click=False
+            )
+    
+    for i in data:
+            try :
+                if i[by]["address"] not in cities:
+                    city = i[by]["address"]
+                    cities[city] = {}
+                    cities[city]["message"] = "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"] +"</i> <br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">online</a> <hr>"
+                    cities[city]["coordinates"] = [i[by]["coordinates"][1], i[by]["coordinates"][0]]
+                    
+                elif i[by]["address"] in cities:
+                    city = i[by]["address"]
+                    cities[city]["message"] = cities[city]["message"] + "<b>"+ i["date"] + " </b> " + i["title"] + "<br><i>"+ i["contributor"]  + "</i><br> <a href=\""+ i["identifier"][1] + "\" target=\"_blank\">online</a> <hr>"
+            except : pass
+            
+
+    # Mapmarker and popup message
+    for i in cities.keys():
+            try :
+                # Create the message of the popup
+                message = HTML()
+                if cities[i]["message"].count("<hr>") <3 :
+                    message.value = cities[i]["message"]
+                else : 
+                    message.value = str(cities[i]["message"].count("<hr>")) + " letters. There are too many results to show them all here."
+                message.description = i.upper()
+
+                # Create the marker
+                marker = CircleMarker(location=(cities[i]["coordinates"][0], cities[i]["coordinates"][1]))
+                radius = cities[i]["message"].count("<hr>")+3
+                if radius > 10:
+                    radius = 12
+                marker.radius = radius
+                marker.fill_opacity = 0.8
+                marker.fill_color = "#2A7299"
+                marker.stroke = False
+
+                # Add marker on the map
+                m.add_layer(marker)
+                marker.popup = message
+            except: pass
+    display(m)
+
