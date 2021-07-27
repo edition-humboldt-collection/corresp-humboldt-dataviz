@@ -17,25 +17,28 @@ out = Output()
 
 
 def create_histogramm(data, person):
-        title = 'Correspondence between AvH(1769-1859) und ' + person
-        x_coords = [coord[0] for coord in data]
-        y_coords = [coord[1] for coord in data]
-        fig= plt.figure(figsize=(10,5))
-        plt.hist(x_coords, bins=30)
-        fig.suptitle(title, fontsize=12)
-        plt.xlabel('Year', fontsize=12)
-        plt.ylabel('Number of letters', fontsize=12)
-        return plt
+    """
+    Create a histogramm of the exchange of letters
+    between AvH and a selected person during the time.
+    :param data: List of letters
+    :param person: Selected person 
+    """
+    title = 'Correspondence between AvH(1769-1859) und ' + person
+    x_coords = [coord[0] for coord in data]
+    fig= plt.figure(figsize=(10,5))
+    plt.hist(x_coords, bins=30)
+    fig.suptitle(title, fontsize=12)
+    plt.xlabel('Year', fontsize=12)
+    plt.ylabel('Number of letters', fontsize=12)
+    return plt
 
 def show_map(data: list, by : str, first: bool):
     """
     Show places (contributor or coverage place) on a map.
-    
     :param data: List of letters
     :param by: Which points should appear on the map? Possibility : coverage_location or contributor_location
     :param first: Set False if you use it recursively
     """
-    
     cities = {}
     marker = None
     coordinates = []
@@ -71,6 +74,7 @@ def show_map(data: list, by : str, first: bool):
     # Mapmarker and popup message
     for i in cities.keys():
             try :
+                # Create the message of the popup
                 message = HTML()
                 if cities[i]["message"].count("<hr>") <3 :
                     message.value = cities[i]["message"]
@@ -90,73 +94,17 @@ def show_map(data: list, by : str, first: bool):
                 marker.popup = message
             except: pass
 
+    # If there is no marker created, then the function is recursive and try to take the geolocalisation of
+    # contributors instead of coverage place
     if marker == None and first == True :
         show_map(data, "contributor_location", False)
+    # If contributor_place and coverage_place were already try, then the function return a dataframe of the data
     elif marker == None and first == False:
         print("An error has been encountered, the map cannot be displayed. We propose to have access to the results in a table format.")
         display(pd.DataFrame(pd.json_normalize(data)))
     else:
+        # If the coverage_ülace works, let show the map.
         display(m)
-
-
-def an_change(change):
-    if change['new'] == True :
-        results = []
-        for i in data:
-            try :
-                if 'Humboldt, Alexander' in i["subject"]:
-                    results.append(i)
-            except : 
-                continue
-
-        clear_output()
-        an = createCheckBox("an AvH", True)
-        von = createCheckBox("von AvH", False)
-
-        display(HBox([an, von]))
-        an.observe(an_change)
-        von.observe(von_change)
-
-        searching_by = ['Sender letters','Date']
-        display(HBox([mapsearch(results, searching_by, True), btn_new_search()]))
-
-    elif change['new'] == False:
-        both_uncheck()
-
-
-def von_change(change):
-    if change['new'] == True :
-        results = []
-        for i in data:
-            try :
-                if 'Humboldt, Alexander' in i["creator"]:
-                    results.append(i)
-            except : 
-                continue
-
-        clear_output()
-        an = createCheckBox("an AvH", False)
-        von = createCheckBox("von AvH", True)
-        display(HBox([an, von]))
-        an.observe(an_change)
-        von.observe(von_change)
-
-        searching_by = ['Recipients letters','Date']
-        display(HBox([mapsearch(results, searching_by, True), btn_new_search()]))
-
-    elif change['new'] == False:
-        both_uncheck()
-
-def both_uncheck():
-    clear_output()
-    an = createCheckBox("an AvH", False)
-    von = createCheckBox("von AvH", False)
-
-    display(HBox([an, von]))
-
-    an.observe(an_change)
-    von.observe(von_change)
-    show_map(data, "coverage_location", True)
 
 
 def date_change(change): 
@@ -164,8 +112,8 @@ def date_change(change):
     Handle if a date is selected in a dropdown menu.
     :param change:
     """
+    date = change['new']
     if change['type'] == 'change' and change['name'] == 'value':
-        date = change['new']
         results = []
 
         for i in data:
@@ -175,7 +123,7 @@ def date_change(change):
             except: pass
         show_map(results, "coverage_location", True)
 
-    if change['new'] == False:
+    if date == False:
         show_map(data, "coverage_location", True)
 
 
@@ -188,6 +136,8 @@ def by_date(data:dict):
     """
     years = getYears(avoidTupleInList(nested_lookup('date', data)))
     dropdown = createDropdown('', years)
+    # If a date is selected in the dropdown menu, then the function
+    # date_change is called.
     dropdown.observe(date_change)
     return dropdown 
 
@@ -208,16 +158,14 @@ def is_male_name(name:str):
 
 def mapsearch(data, search_possibilities, flag : bool):
     """
-    Recursive algorithm with allows 
+    Recursive algorithm which allows 
     a dynamic search with a map visualisation of results.
-    
     :param data: list
     :param search_possibilities: list
     :param flag: bool
     """
     search_by = search_possibilities
     search_dropdown = createDropdown('Search by', search_by)
-    new = flag
     
     def show_results(results):
         if len(results) <10:
@@ -327,7 +275,6 @@ def person_change(change):
                     liste.append((int(i['date'][:4]), int(1)))
             except:pass
             
-            
         # create the histogramm
         plt = create_histogramm(liste, person)
         plt.show()
@@ -374,7 +321,6 @@ def by_person(data:dict):
 def age_distribution() :
     years_an = {}
     years_von = {}
-    
     liste_an=[]
     liste_von=[]
     

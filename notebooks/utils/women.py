@@ -66,6 +66,12 @@ def women_partner():
        
     
 def women_change(change): 
+    """
+    Handle if a woman's name has been selected in
+    the correspondant dropdown menu
+    :param change: 
+    :return: show_results
+    """
     if change['type'] == 'change' and change['name'] == 'value':
         person = change['new']
         results = []

@@ -10,6 +10,7 @@ from .widgets import createDropdown, createButton
 
 data = getJSON('data/records.json')
 
+
 def show_webpage(link:str):
     """
     Return the web page of the param link
@@ -50,7 +51,6 @@ def search(data, search_possibilities, flag : bool):
     """
     search_by = search_possibilities
     search_dropdown = createDropdown('Search by', search_by)
-    new = flag
     
     def show_results(results):
         """
@@ -96,6 +96,12 @@ def search(data, search_possibilities, flag : bool):
             search(results, search_by, False)
 
     def change_creators(change):
+        """
+        Handle if a sender has been selected in
+        the correspondant dropdown menu
+        :param change: 
+        :return: show_results
+        """
         # If a creator/sender is selected in the dropdown menu
         if change['type'] == 'change' and change['name'] == 'value':
             # the selected value is sender
@@ -120,6 +126,12 @@ def search(data, search_possibilities, flag : bool):
             show_results(results)
 
     def change_recipients(change):
+        """
+        Handle if an addressee has been selected in
+        the correspondant dropdown menu
+        :param change: 
+        :return: show_results
+        """
         # If a creator/sender is selected in the dropdown menu
         if change['type'] == 'change' and change['name'] == 'value':
             # the selected value is the addressee
@@ -143,6 +155,12 @@ def search(data, search_possibilities, flag : bool):
             show_results(results)
 
     def change_date(change):
+        """
+        Handle if a date has been selected in
+        the correspondant dropdown menu
+        :param change: 
+        :return: show_results
+        """
         # If a data is selected in the dropdown menu
         if change['type'] == 'change' and change['name'] == 'value':
             # the selected value is the data
@@ -163,6 +181,12 @@ def search(data, search_possibilities, flag : bool):
             
             
     def change_institution(change): 
+        """
+        Handle if an institution has been selected in
+        the correspondant dropdown menu
+        :param change: 
+        :return: show_results
+        """
         # This function searchs in institutions who put their data on kalliope
         # but also institutions which are in the analog collection of the BBAW. We know
         # the number of documents related to Humbolt stored by theses institutions
@@ -200,6 +224,12 @@ def search(data, search_possibilities, flag : bool):
 
 
     def change_place(change): 
+        """
+        Handle if a place has been selected in
+        the correspondant dropdown menu
+        :param change: 
+        :return: show_results
+        """
         # If a place is selected in the dropdown menu
         if change['type'] == 'change' and change['name'] == 'value':
             # the selected value is the place
@@ -233,6 +263,10 @@ def search(data, search_possibilities, flag : bool):
 
     
     def change_search(change): 
+        """
+        Manage what the user wants to search by
+        :param change: 
+        """
         # If a value is selected in the dropdown menu
         if change['type'] == 'change' and change['name'] == 'value':
             # Search by sender

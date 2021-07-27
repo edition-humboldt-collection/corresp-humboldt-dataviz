@@ -18,6 +18,7 @@ def createDropdown(desc: str, data:list ):
     )
     return w
 
+
 def createCheckBox(desc:str, value:bool):
     """
     Create a checkbox 
@@ -33,6 +34,7 @@ def createCheckBox(desc:str, value:bool):
     indent=False
     )
     return w
+    
 
 def createButton(desc:str, style: str):
     """

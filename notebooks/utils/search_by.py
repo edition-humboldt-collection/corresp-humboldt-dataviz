@@ -10,6 +10,7 @@ from .widgets import createDropdown, createButton
 
 data = getJSON('data/records.json')
 
+
 def get_links(links: list):
     """
     Print a list of link for the user.
@@ -19,7 +20,14 @@ def get_links(links: list):
     for i in links[:15]:
         print('- ' + i)
 
+
 def onChangeRecipients(change):
+    """
+    Handle if an addressee has been selected in
+    the correspondant dropdown menu
+    :param change: 
+    :return: dataframe
+    """
     # If a addressee is selected in the dropdown menu
     if change['type'] == 'change' and change['name'] == 'value':
         # the selected value is the recipient/addresee
@@ -58,6 +66,12 @@ def onChangeRecipients(change):
             get_links(url)        
 
 def onChangeCreators(change): 
+    """
+    Handle if a sender has been selected in
+    the correspondant dropdown menu
+    :param change: 
+    :return: dataframe
+    """
     # If a sender is selected in the dropdown menu
     if change['type'] == 'change' and change['name'] == 'value':
         # the selected value is the sender which called creator in the API's metadata
@@ -95,6 +109,12 @@ def onChangeCreators(change):
             get_links(url)
 
 def onChangePlaces(change):
+    """
+    Handle if a place has been selected in
+    the correspondant dropdown menu
+    :param change: 
+    :return: dataframe
+    """
     # If a place is selected in the dropdown menu
     if change['type'] == 'change' and change['name'] == 'value':
         # the selected value is the coverage place which called coverage in the API's metadata
@@ -133,6 +153,12 @@ def onChangePlaces(change):
 
 
 def onChangeDate(change): 
+    """
+    Handle if a date has been selected in
+    the correspondant dropdown menu
+    :param change: 
+    :return: dataframe
+    """
     # If a date is selected in the dropdown menu
     if change['type'] == 'change' and change['name'] == 'value':
         # the selected value is the year of the date of sending
@@ -170,6 +196,12 @@ def onChangeDate(change):
 
 
 def onChangeInstitution(change): 
+    """
+    Handle if an institution has been selected in
+    the correspondant dropdown menu
+    :param change: 
+    :return: dataframe
+    """
     fb = getJSON("data/edh_findbuch.json")
     if change['type'] == 'change' and change['name'] == 'value':
         institution = change['new']
