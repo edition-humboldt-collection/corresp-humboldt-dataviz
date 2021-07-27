@@ -1,6 +1,7 @@
 from nested_lookup import nested_lookup
 import pandas as pd
 import numpy
+import random
 import IPython
 from IPython.display import display, clear_output
 from ipywidgets import HTML, Output, HBox
@@ -436,4 +437,72 @@ def all_on_map(data, by: str):
                 marker.popup = message
             except: pass
     display(m)
+
+
+def sorted_by_period(data:list):
+    by_period = {'1830-1859':[], '1829': [], '1806-1828':[], '1805': [], '1799-1804': [], '1792-1798' : []}
+
+    for i in data:
+        try :
+            date = int(i['date'][:4])
+            if date > 1792 and date < 1796:
+                by_period['1792-1798'].append(i)
+            elif date > 1799 and date < 1804:
+                by_period['1799-1804'].append(i)
+            elif date == 1805:
+                by_period['1805'].append(i)
+            elif date > 1806 and date < 1828:
+                by_period['1806-1828'].append(i)
+            elif date == 1829:
+                by_period['1829'].append(i)
+            elif date > 1830 and date < 1859:
+                by_period['1830-1859'].append(i)
+        except: pass
+
+    return by_period
+
+
+def map_by_period(data, by: str):
+    """
+    Show all letters of AvH's correspondence with different color for different period of his life.
+    There are in total 6 periods represented on the map
+    :param data: List of letters
+    :param by: what should be on the map represented ? 'coverage_location' or 'contributor_location' ? 
+    """
+    marker = None
+    colors = []
+    m = Map(
+            center=(10, -2),
+            zoom=1.5,
+            close_popup_on_click=False
+            )
+
+    # Mapmarker and popup message
+    for x in data:
+        color = "%06x" % random.randint(0, 0xFFFFFF)
+        color ='#'+ color
+        colors.append(color)
+        
+        for i in data[x]:
+            try :
+                # Create the message of the popup
+                message = HTML()
+                message.value = i["coverage"]
+
+                # Create the marker
+                marker = CircleMarker(location=(i['coverage_location']['coordinates'][1],i['coverage_location']['coordinates'][0]))
+                marker.radius = 4
+                marker.fill_opacity = 0.5
+                marker.fill_color = color
+                marker.stroke = False
+
+                # Add marker on the map
+                m.add_layer(marker)
+                marker.popup = message
+            except: pass
+
+    display(HTML("<span style='background-color:{};font-weight: bold;'> 1830-1859 </span><span style='background-color:{};font-weight: bold;'> 1806-1828 </span><span style='background-color:{};font-weight: bold;'> 1805 </span><span style='background-color:{};font-weight: bold;'> 1799-1804 </span><span style='background-color:{};font-weight: bold;'> 1792-1798 </span>".format(colors[0],colors[1], colors[2], colors[3], colors[4], colors[5])))
+    display(m)
+
+
 
