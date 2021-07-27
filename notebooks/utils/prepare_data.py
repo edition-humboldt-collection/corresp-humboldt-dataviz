@@ -1,5 +1,6 @@
 import json
 
+
 def writeJSON(file, data):
     """
     Store JSON data in a JSON file 
@@ -8,6 +9,7 @@ def writeJSON(file, data):
     """
     with open(file, mode='w') as f:
         json.dump(data, f)
+
 
 def getJSON(path):
     """
@@ -19,6 +21,7 @@ def getJSON(path):
     with open(path, encoding="iso-8859-15" ) as data_file:
        data = json.load(data_file)
     return data;
+
 
 def avoidTupleInList(data : list):
     """
@@ -32,6 +35,7 @@ def avoidTupleInList(data : list):
         if type(i) != list:
             clean_data.append(i)
     return clean_data
+
 
 def getYears(dates :list):
     """
