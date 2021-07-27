@@ -57,19 +57,21 @@ def show_map(data: list, by : str, first: bool):
             except : pass
     
     # Coordinates to create a dynamic map boundaries
-    for i in cities.keys():
-        if type(cities[i]["coordinates"][0]) == float and type(cities[i]["coordinates"][1]) == float:
-            coordinates.append([float(cities[i]["coordinates"][0]), float(cities[i]["coordinates"][1])])
-        elif type(cities[i]["coordinates"][0]) == str and type(cities[i]["coordinates"][1]) == str:
-            coordinates.append([float(cities[i]["coordinates"][0]), float(cities[i]["coordinates"][1])])
+    try:
+        for i in cities.keys():
+            if type(cities[i]["coordinates"][0]) == float and type(cities[i]["coordinates"][1]) == float:
+                coordinates.append([float(cities[i]["coordinates"][0]), float(cities[i]["coordinates"][1])])
+            elif type(cities[i]["coordinates"][0]) == str and type(cities[i]["coordinates"][1]) == str:
+                coordinates.append([float(cities[i]["coordinates"][0]), float(cities[i]["coordinates"][1])])
     
-    coordinates = numpy.array(coordinates)
-    data_frame = pd.DataFrame(coordinates, columns=['Lat', 'Long'])
-    sw = data_frame[['Lat', 'Long']].min().values.tolist()
-    ne = data_frame[['Lat', 'Long']].max().values.tolist()
+        coordinates = numpy.array(coordinates)
+        data_frame = pd.DataFrame(coordinates, columns=['Lat', 'Long'])
+        sw = data_frame[['Lat', 'Long']].min().values.tolist()
+        ne = data_frame[['Lat', 'Long']].max().values.tolist()
 
-    m = Map(close_popup_on_click=False)
-    m.fit_bounds([sw, ne])
+        m = Map(close_popup_on_click=False)
+        m.fit_bounds([sw, ne])
+    except: pass
 
     # Mapmarker and popup message
     for i in cities.keys():
