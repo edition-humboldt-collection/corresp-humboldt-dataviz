@@ -501,7 +501,7 @@ def map_by_period(data, by: str):
                 marker.popup = message
             except: pass
 
-    display(HTML("<span style='background-color:{};font-weight: bold;'> 1830-1859 </span><span style='background-color:{};font-weight: bold;'> 1806-1828 </span><span style='background-color:{};font-weight: bold;'> 1805 </span><span style='background-color:{};font-weight: bold;'> 1799-1804 </span><span style='background-color:{};font-weight: bold;'> 1792-1798 </span>".format(colors[0],colors[1], colors[2], colors[3], colors[4], colors[5])))
+    display(HTML("<span style='background-color:{};font-weight: bold;'> 1830-1859 </span><span style='background-color:{};font-weight: bold;'> 1829 </span><span style='background-color:{};font-weight: bold;'> 1806-1828 </span><span style='background-color:{};font-weight: bold;'> 1805 </span><span style='background-color:{};font-weight: bold;'> 1799-1804 </span><span style='background-color:{};font-weight: bold;'> 1792-1798 </span>".format(colors[0],colors[1], colors[2], colors[3], colors[4], colors[5])))
     display(m)
 
 
