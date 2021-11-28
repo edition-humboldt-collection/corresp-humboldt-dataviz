@@ -88,5 +88,11 @@ Prerequisite: python3
 Corresp-humboldt-dataviz is developed by [Axelle Lecroq](https://github.com/axellelecroq/), intern in the BBAW's project ["Travelling Humboldt - Science on the Move"](https://edition-humboldt.de/?&l=en), with the help of [Gordon Fischer](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/fischer-gordon) and under the supervision of [Dr. Ulrich Päßler](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/paessler-ulrich) and [Dr. Tobias Kraft](https://www.bbaw.de/die-akademie/mitarbeiterinnen-mitarbeiter/kraft-tobias).
 The search aid for the analogue collection has been digitally reproduced by Anne McKinney.
 
+This github repository is part of my master thesis work:
+Axelle Lecroq, _Entre enrichissement et développement de projets : l’utilisation de données externes pour la correspondance d’Alexander von Humboldt_, sous la direction d´Ariane Pinche, École nationale des chartes (PSL), 2021.
+
+# Bibliographie
+You can find the bibliography [here](documentation/bibliography.md).
+
 # Contacts
 If you have any questions or remarks, please contact [axelle.lecroq[at]bbaw.de](mailto:axelle.lecroq@bbaw.de).

@@ -1,3 +1,12 @@
+# Bibliographie
+Axelle Lecroq, _Entre enrichissement et développement de projets : l’utilisation de données externes pour la correspondance d’Alexander von Humboldt_, sous la direction d´Ariane Pinche, École nationale des chartes (PSL), 2021.
+
+## Similar projects
+- Hotson, H., & Wallnig, T. (Eds.). (2019). _Reassembling the Republic of Letters in the Digital Age_. doi:10.17875/gup2019-1146
+- [Mapping the Republic of Letters](http://republicofletters.stanford.edu/), Stanford University, 2013. 
+- ERNiE’s bibliographical details (Encyclopedia of Romantic Nationalism in Europe, ed. Joep Leerssen; Amsterdam: Study Platform on Interlocking Nationalisms, 2015) : [https://ernie.uva.nl/](https://ernie.uva.nl/).
+
+## About the correspondance´s collection of Alexander von Humboldt in the German Academy of Sciences at Berlin (BBAW)
 - Biermann, Kurt-R. und Fritz G. Lange (1962). „Die Alexander-von-Humboldt-Briefausgabe“. _Forschungen und Fortschritte_ 36, 8: S. 225–230.
 - Biermann, Kurt-R. (1965). „Der Zugang an Briefen Alexander von Humboldts hält an“. _Spektrum. Mitteilungsblatt für die Mitarbeiter der Deutschen Akademie der Wissenschaften zu Berlin_ 11, 2: S. 55–58. 
 - Biermann, Kurt-R. (1974). „Die Alexander-von-Humboldt-Forschung an der Akademie der Wissenschaften der D.D.R. – Ergebnisse und Ziele“. _Boston Studies in the Philosophy of Science_ 15: S. 295–305.
