@@ -91,12 +91,10 @@ Corresp-humboldt-dataviz is developed by [Axelle Lecroq](https://github.com/axel
 The search aid for the analogue collection has been digitally reproduced by Anne McKinney.
 
 This github repository is part of my master thesis work:
-Axelle Lecroq, _Entre enrichissement et développement de projets : l’utilisation de données externes pour la correspondance d’Alexander von Humboldt_, sous la direction d´Ariane Pinche, École nationale des chartes (PSL), 2021.
+Axelle Lecroq, _Entre enrichissement et développement de projets : l’utilisation de données externes pour la correspondance d’Alexander von Humboldt_, sous la direction d´Ariane Pinche, École nationale des chartes (PSL), 2021. [github repository](https://github.com/axellelecroq/masterthesis_tnah)
 
 # Bibliographie
 You can find the bibliography [here](documentation/bibliography.md).
-
-
 
 # Contacts
 If you have any questions or remarks, please contact [axelle.lecroq[at]bbaw.de](mailto:axelle.lecroq@bbaw.de).
