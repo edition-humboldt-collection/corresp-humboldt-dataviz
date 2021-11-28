@@ -60,9 +60,11 @@ corresp-humboldt-dataviz
 ## Tools used
 In the absence of developing an entire website allowing for a thorough user experience, it was decided to start by using jupyter notebooks. These interactive and powerful notebooks have the advantage of offering numerous widget possibilities and data visualisations.
 Several libraries were used for data visualisations, among them the main ones are:
-- ipywidgets for widgets in the jupyter notebook
-- matplotlib for histograms
-- ipyleaflet for map visualisations
+- [ipywidgets](https://ipywidgets.readthedocs.io/en/latest/)
+- [ipyleaflet](https://ipyleaflet.readthedocs.io/en/latest/)
+- [matplotlib](https://matplotlib.org/)
+- [pandas](https://pandas.pydata.org/)
+- [numpy](https://numpy.org/)
 
 
 # Discover the Alexander von Humboldt's correspondence
