@@ -96,5 +96,7 @@ Axelle Lecroq, _Entre enrichissement et développement de projets : l’utilisat
 # Bibliographie
 You can find the bibliography [here](documentation/bibliography.md).
 
+
+
 # Contacts
 If you have any questions or remarks, please contact [axelle.lecroq[at]bbaw.de](mailto:axelle.lecroq@bbaw.de).

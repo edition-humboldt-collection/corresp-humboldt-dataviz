@@ -1,6 +1,10 @@
 # Bibliographie
 Axelle Lecroq, _Entre enrichissement et développement de projets : l’utilisation de données externes pour la correspondance d’Alexander von Humboldt_, sous la direction d´Ariane Pinche, École nationale des chartes (PSL), 2021.
 
+This project was also presented at various events : 
+- Virtual DH Colloquium at the BBAW, 6.8.2021: "Alexander von Humboldt auf Reisen: Chronotopic Approaches to the edition humboldt digital." [https://dhd-blog.org/](https://dhd-blog.org/?p=16293)
+- vDHD2021 : Alexander von Humboldt auf Reisen: Chronotopische Zugänge zur edition humboldt digital, 16.6.2021. [https://vdhd2021.hypotheses.org/](https://vdhd2021.hypotheses.org/292)
+
 ## Similar projects
 - Hotson, H., & Wallnig, T. (Eds.). (2019). _Reassembling the Republic of Letters in the Digital Age_. doi:10.17875/gup2019-1146
 - [Mapping the Republic of Letters](http://republicofletters.stanford.edu/), Stanford University, 2013. 
