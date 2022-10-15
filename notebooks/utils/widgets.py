@@ -1,5 +1,5 @@
 import ipywidgets as widgets
-from nested_lookup import nested_lookup
+from .nestedlookup import *
 
 
 def createDropdown(desc: str, data:list ):

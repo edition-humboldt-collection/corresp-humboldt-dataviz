@@ -1,4 +1,3 @@
-from nested_lookup import nested_lookup
 import pandas as pd
 import numpy
 import random
@@ -8,7 +7,7 @@ from ipywidgets import HTML, Output, HBox
 from ipyleaflet import Map, Marker, Popup, CircleMarker
 import matplotlib.pyplot as plt
 
-
+from .nestedlookup import *
 from .search_dynamic import show_webpage,btn_new_search
 from .prepare_data import getJSON, avoidTupleInList, getYears, getHumboldtYears
 from .widgets import createDropdown, createButton, createCheckBox

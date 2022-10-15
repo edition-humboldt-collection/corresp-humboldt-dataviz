@@ -1,5 +1,4 @@
 import pandas as pd
-from nested_lookup import nested_lookup
 import IPython
 from IPython.display import display
 import ipywidgets as wgt
@@ -7,6 +6,7 @@ import ipywidgets as wgt
 from .search_dynamic import show_webpage
 from .prepare_data import getJSON, avoidTupleInList, getYears, getHumboldtYears
 from .widgets import createDropdown, createButton
+from .nestedlookup import *
 
 data = getJSON('data/records.json')
 

@@ -1,12 +1,12 @@
 from ipyleaflet import Map, Marker, Popup
 from ipywidgets import HTML
-from nested_lookup import nested_lookup
 import matplotlib.pyplot as plt
 import gender_guesser.detector
 
 from .widgets import createDropdown, createButton, createCheckBox
 from .prepare_data import getJSON, avoidTupleInList
 from .mapviz import show_map, create_histogramm
+from .nestedlookup import *
 
 
 data = getJSON('data/records.json')
